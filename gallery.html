@@ -31,16 +31,17 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             flex: 1;
             display: flex;
-            overflow: hidden;
+            flex-direction: column;
+            gap: 20px;
         }
         .image-gallery {
             display: flex;
+            flex-direction: column;
             gap: 20px;
-            height: 600px;
-            flex-grow: 1;
         }
         .main-image {
-            flex: 2;
+            width: 100%;
+            height: 400px;
         }
         .main-image img {
             width: 100%;
@@ -49,16 +50,18 @@
             display: block;
         }
         .thumbnail-images {
-            flex: 1;
             display: flex;
-            flex-direction: column;
-            gap: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
             overflow-y: auto;
-            height: 100%;
+            height: 300px;
+        }
+        .thumbnail-images a {
+            flex: 1 0 100px; /* Responsive width */
         }
         .thumbnail-images img {
-            width: 200px;
-            height: 200px;
+            width: 100%;
+            height: auto;
             object-fit: cover;
             cursor: pointer;
             border: 2px solid #ddd;
@@ -76,6 +79,25 @@
             box-sizing: border-box;
             margin-top: auto;
         }
+        @media (max-width: 768px) {
+            .main-image {
+                height: 300px;
+            }
+            .thumbnail-images {
+                height: 200px;
+            }
+        }
+        @media (max-width: 480px) {
+            .main-image {
+                height: 200px;
+            }
+            .thumbnail-images {
+                height: 150px;
+            }
+            .thumbnail-images a {
+                flex: 1 0 80px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -90,26 +112,24 @@
             <img id="mainImage" src="frontofhouse.jpg" alt="Selected Property Image">
         </div>
         <div class="thumbnail-images" id="thumbnailImages">
-        <a href="gallery.html?image=frontofhouse"><img src="frontofhouse.jpg" alt="Front of House"></a>
+            <a href="gallery.html?image=frontofhouse"><img src="frontofhouse.jpg" alt="Front of House"></a>
             <a href="gallery.html?image=IMG1"><img src="IMG1.jpg" alt="Interior Image 1"></a>
             <a href="gallery.html?image=IMG2"><img src="IMG2.jpg" alt="Interior Image 2"></a>
             <a href="gallery.html?image=IMG3"><img src="IMG3.jpg" alt="Interior Image 3"></a>
-
-
-        <a href="gallery.html?image=IMG4"><img src="IMG4.jpg" alt="Interior Image 4"></a>
-        <a href="gallery.html?image=IMG5"><img src="IMG5.jpg" alt="Interior Image 5"></a>
-        <a href="gallery.html?image=IMG6"><img src="IMG6.jpg" alt="Interior Image 6"></a>
-        <a href="gallery.html?image=IMG7"><img src="IMG7.jpg" alt="Interior Image 7"></a>
-        <a href="gallery.html?image=IMG8"><img src="IMG8.jpg" alt="Interior Image 8"></a>
-        <a href="gallery.html?image=IMG9"><img src="IMG9.jpg" alt="Interior Image 9"></a>
-        <a href="gallery.html?image=IMG10"><img src="IMG10.jpg" alt="Interior Image 10"></a>
-        <a href="gallery.html?image=IMG11"><img src="IMG11.jpg" alt="Interior Image 11"></a>
-        <a href="gallery.html?image=IMG12"><img src="IMG12.jpg" alt="Interior Image 12"></a>
-        <a href="gallery.html?image=IMG13"><img src="IMG13.jpg" alt="Interior Image 13"></a>
-        <a href="gallery.html?image=IMG14"><img src="IMG14.jpg" alt="Interior Image 14"></a>
-        <a href="gallery.html?image=IMG15"><img src="IMG15.jpg" alt="Interior Image 15"></a>
-        <a href="gallery.html?image=IMG16"><img src="IMG16.jpg" alt="Interior Image 16"></a>
-        <a href="gallery.html?image=IMG17"><img src="IMG17.jpg" alt="Interior Image 17"></a>
+            <a href="gallery.html?image=IMG4"><img src="IMG4.jpg" alt="Interior Image 4"></a>
+            <a href="gallery.html?image=IMG5"><img src="IMG5.jpg" alt="Interior Image 5"></a>
+            <a href="gallery.html?image=IMG6"><img src="IMG6.jpg" alt="Interior Image 6"></a>
+            <a href="gallery.html?image=IMG7"><img src="IMG7.jpg" alt="Interior Image 7"></a>
+            <a href="gallery.html?image=IMG8"><img src="IMG8.jpg" alt="Interior Image 8"></a>
+            <a href="gallery.html?image=IMG9"><img src="IMG9.jpg" alt="Interior Image 9"></a>
+            <a href="gallery.html?image=IMG10"><img src="IMG10.jpg" alt="Interior Image 10"></a>
+            <a href="gallery.html?image=IMG11"><img src="IMG11.jpg" alt="Interior Image 11"></a>
+            <a href="gallery.html?image=IMG12"><img src="IMG12.jpg" alt="Interior Image 12"></a>
+            <a href="gallery.html?image=IMG13"><img src="IMG13.jpg" alt="Interior Image 13"></a>
+            <a href="gallery.html?image=IMG14"><img src="IMG14.jpg" alt="Interior Image 14"></a>
+            <a href="gallery.html?image=IMG15"><img src="IMG15.jpg" alt="Interior Image 15"></a>
+            <a href="gallery.html?image=IMG16"><img src="IMG16.jpg" alt="Interior Image 16"></a>
+            <a href="gallery.html?image=IMG17"><img src="IMG17.jpg" alt="Interior Image 17"></a>
         </div>
     </div>
 </div>
@@ -160,7 +180,7 @@
 
         // Set the main image based on the URL parameter
         if (imageParam) {
-            const imgPath = "" + imageParam + ".jpg";
+            const imgPath = imageParam + ".jpg";
             updateMainImage(imgPath);
 
             // Find the current index and scroll to the thumbnail
