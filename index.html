@@ -29,31 +29,31 @@
             position: relative;
         }
         .main-content {
-            width: 70%;
-            padding-right: 20px;
+            width: 100%;
+            padding-right: 0;
             box-sizing: border-box;
         }
         .sidebar {
-            width: 30%;
+            width: 100%;
             box-sizing: border-box;
+            margin-top: 20px;
         }
         .property-title {
-            font-size: 28px;
+            font-size: 24px;
             color: #1e3a8a;
             margin-bottom: 10px;
         }
         .property-location {
-            font-size: 18px;
+            font-size: 16px;
             color: #4a5568;
             margin-bottom: 20px;
         }
         .property-images {
             display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
+            flex-direction: column;
         }
         .main-image {
-            flex: 2;
+            margin-bottom: 10px;
         }
         .main-image img {
             width: 100%;
@@ -61,17 +61,15 @@
             object-fit: cover;
         }
         .thumbnail-images {
-            flex: 1;
             display: flex;
-            flex-direction: column;
+            overflow-x: auto;
             gap: 10px;
         }
         .thumbnail-images a {
-            display: block;
+            flex: 0 0 auto;
         }
         .thumbnail-images img {
-            width: 100%;
-            max-width: 100px;
+            width: 100px;
             height: auto;
             object-fit: cover;
             cursor: pointer;
@@ -85,7 +83,7 @@
             margin-bottom: 30px;
         }
         .details-group h3 {
-            font-size: 24px;
+            font-size: 20px;
             color: #1e3a8a;
             margin-bottom: 10px;
         }
@@ -94,13 +92,13 @@
             margin-bottom: 10px;
         }
         .price {
-            font-size: 28px;
+            font-size: 24px;
             color: #1e3a8a;
             font-weight: bold;
             margin-bottom: 20px;
         }
         .sidebar h3 {
-            font-size: 20px;
+            font-size: 18px;
             color: #1e3a8a;
             margin-bottom: 10px;
         }
@@ -177,33 +175,58 @@
         .building-details {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px; /* Adjusts the gap between the columns */
+            gap: 20px;
         }
-
         .building-column {
             flex: 1;
-            min-width: 300px; /* Ensures columns stack on smaller screens */
+            min-width: 300px;
         }
-
         @media (max-width: 768px) {
-            .building-details {
-                flex-direction: column;
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .main-content, .sidebar {
+            .main-content {
                 width: 100%;
                 padding-right: 0;
+            }
+            .sidebar {
+                width: 100%;
+                margin-top: 20px;
+            }
+            .property-title {
+                font-size: 20px;
+            }
+            .property-location {
+                font-size: 14px;
             }
             .thumbnail-images {
                 flex-direction: row;
                 overflow-x: auto;
             }
             .thumbnail-images a {
-                flex: 0 0 auto;
                 width: 100px;
+            }
+            .details-group h3 {
+                font-size: 18px;
+            }
+            .price {
+                font-size: 20px;
+            }
+        }
+        @media (max-width: 480px) {
+            .property-title {
+                font-size: 18px;
+            }
+            .property-location {
+                font-size: 12px;
+            }
+            .price {
+                font-size: 18px;
+            }
+            .calendar-container input, 
+            .calendar-container textarea {
+                font-size: 14px;
+            }
+            .calendar-container button {
+                font-size: 14px;
+                padding: 8px 16px;
             }
         }
     </style>
@@ -216,7 +239,6 @@
     </div>
 </header>
 
-
 <div class="container">
     <div class="contact-container">
         <a href="mailto:example@example.com?subject=Inquiry%20About%20Property%2046th%20Avenue" class="email-button">
@@ -227,74 +249,66 @@
         <h2 class="property-title">Address When Live</h2>
         <p class="property-location">Alberta</p>
 
-<div class="property-images">
-    <div class="main-image">
-        <a href="gallery.html?image=frontofhouse" target="_blank">
-            <img src="frontofhouse.jpg" alt="Property Image">
-        </a>
-    </div>
-    <div class="thumbnail-images">
-        <a href="gallery.html?image=frontofhouse" target="_blank">
-            <img src="frontofhouse.jpg" alt="Front of House">
-        </a>
-        <a href="gallery.html?image=IMG1" target="_blank">
-            <img src="IMG1.jpg" alt="Interior Image 1">
-        </a>
-       <a href="gallery.html?image=IMG2" target="_blank">
-            <img src="IMG2.jpg" alt="Interior Image 2">
-        </a>
-        <a href="gallery.html?image=IMG3" target="_blank">
-            <img src="IMG3.jpg" alt="Interior Image 3">
-        </a>
-    </div>
-</div>
+        <div class="property-images">
+            <div class="main-image">
+                <a href="gallery.html?image=frontofhouse" target="_blank">
+                    <img src="frontofhouse.jpg" alt="Property Image">
+                </a>
+            </div>
+            <div class="thumbnail-images">
+                <a href="gallery.html?image=frontofhouse" target="_blank">
+                    <img src="frontofhouse.jpg" alt="Front of House">
+                </a>
+                <a href="gallery.html?image=IMG1" target="_blank">
+                    <img src="IMG1.jpg" alt="Interior Image 1">
+                </a>
+                <a href="gallery.html?image=IMG2" target="_blank">
+                    <img src="IMG2.jpg" alt="Interior Image 2">
+                </a>
+                <a href="gallery.html?image=IMG3" target="_blank">
+                    <img src="IMG3.jpg" alt="Interior Image 3">
+                </a>
+            </div>
+        </div>
 
-        <!-* New Listing Details Section -->
         <div class="details-group">
             <h3>Listing Details</h3>
             <p>Welcome to this stunning contemporary residence, built in 2019, nestled in the highly sought-after neighborhood of Forest Heights in Beaumont, AB. This modern gem boasts elegant finishes and a host of upgrades, all within an inviting open floor plan complemented by soaring 9-foot ceilings that create a spacious and airy atmosphere.</p>
-
-<p>The heart of the home features a beautifully designed kitchen with high-end appliances and finishes, seamlessly flowing into the dining and living areas—perfect for both everyday living and entertaining.</p>
-
-<p>Step outside to discover a delightful backyard oasis, complete with a charming gazebo and ample outdoor space ideal for hosting gatherings and enjoying warm summer evenings.</p>
-
-<p>The home includes a partially finished basement with a versatile room and a convenient bathroom, providing extra space for guests or recreational activities. Upstairs, you'll find three generously sized bedrooms, flex space for additional living area, a master suite that features a luxurious ensuite bathroom and a walk-in closet, offering a perfect retreat.</p>
-
-<p>Additional highlights of this exceptional property include central air conditioning for year-round comfort, a side entry for added convenience, and an oversized epoxy-coated garage for all your storage needs. A concrete walkway leads to the side entry, enhancing the home's curb appeal and accessibility.</p>
-
-<p>With all these premium upgrades, this home is attractively priced to sell. Don’t miss the opportunity to own this beautifully maintained and upgraded home in the desirable Forest Heights community.</p>
-
+            <p>The heart of the home features a beautifully designed kitchen with high-end appliances and finishes, seamlessly flowing into the dining and living areas—perfect for both everyday living and entertaining.</p>
+            <p>Step outside to discover a delightful backyard oasis, complete with a charming gazebo and ample outdoor space ideal for hosting gatherings and enjoying warm summer evenings.</p>
+            <p>The home includes a partially finished basement with a versatile room and a convenient bathroom, providing extra space for guests or recreational activities. Upstairs, you'll find three generously sized bedrooms, flex space for additional living area, a master suite that features a luxurious ensuite bathroom and a walk-in closet, offering a perfect retreat.</p>
+            <p>Additional highlights of this exceptional property include central air conditioning for year-round comfort, a side entry for added convenience, and an oversized epoxy-coated garage for all your storage needs. A concrete walkway leads to the side entry, enhancing the home's curb appeal and accessibility.</p>
+            <p>With all these premium upgrades, this home is attractively priced to sell. Don’t miss the opportunity to own this beautifully maintained and upgraded home in the desirable Forest Heights community.</p>
         </div>
 
         <hr>
 
-  <div class="details-group">
-    <h3>Building</h3>
-    <div class="building-details">
-        <div class="building-column">
-            <p><strong>Bathrooms Total:</strong> 3.5</p>
-            <p style="margin-left: 50px;"><b>2</b> * Upstairs (Main, Ensuite)</p>
-            <p style="margin-left: 50px;"><b>1</b> * Main (Sink, Toilet)</p>
-            <p style="margin-left: 50px;"><b>1</b> * Basement (Sink, Toilet, Tub)</p>
-            <p><strong>Style:</strong> 2 Storey w/ Attached Garage</p>
-            <p><strong>Fire Protection:</strong> Smoke Detectors</p>
+        <div class="details-group">
+            <h3>Building</h3>
+            <div class="building-details">
+                <div class="building-column">
+                    <p><strong>Bathrooms Total:</strong> 3.5</p>
+                    <p><b>2</b> * Upstairs (Main, Ensuite)</p>
+                    <p><b>1</b> * Main (Sink, Toilet)</p>
+                    <p><b>1</b> * Basement (Sink, Toilet, Tub)</p>
+                    <p><strong>Style:</strong> 2 Storey w/ Attached Garage</p>
+                    <p><strong>Fire Protection:</strong> Smoke Detectors</p>
+                </div>
+                <div class="building-column">
+                    <p><strong>Structures:</strong> All Fencing, Oversized Deck, Backyard Gazebo area with full stamped concrete walkway</p>
+                    <p><strong>Basement Type:</strong> Full 9' (Partially Finished)</p>
+                    <p><strong>Additional:</strong></p>
+                    <p>* Concrete connecting to side entry</p>
+                    <p>* Artificial Turf (Front Yard)</p>
+                    <p>* Front Landscaping with Curbing</p>
+                    <p>* Stamped concrete walkway and pad in the backyard</p>
+                    <p>* Large Gazebo</p>
+                    <p>* Heated Garage</p>
+                    <p>* Oversized Deck</p>
+                    <p>* Central Air Conditioning</p>
+                </div>
+            </div>
         </div>
-        <div class="building-column">
-            <p><strong>Structures:</strong> All Fencing, Oversized Deck, Backyard Gazebo area with full stamped concrete walkway</p>
-            <p><strong>Basement Type:</strong> Full 9' (Partially Finished)</p>
-            <p><strong>Additional:</strong></p>
-            <p style="margin-left: 50px;">* Concrete connecting to side entry</p>
-	<p style="margin-left: 50px;">* Artificial Turf (Front Yard)</p>
-            <p style="margin-left: 50px;">* Front Landscaping with Curbing</p>
-            <p style="margin-left: 50px;">* Stamped concrete walkway and pad in the backyard</p>
-            <p style="margin-left: 50px;">* Large Gazebo</p>
-	<p style="margin-left: 50px;">* Heated Garage</p>
-            <p style="margin-left: 50px;">* Oversized Deck</p>
-            <p style="margin-left: 50px;">* Central Air Conditioning</p>
-        </div>
-    </div>
-</div>
-
 
         <hr>
 
