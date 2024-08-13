@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/css/lightbox.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+        }
+        .image-gallery {
+            display: flex;
+            gap: 20px;
+            height: 600px;
+            flex-grow: 1;
+        }
+        .main-image {
+            flex: 2;
+        }
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .thumbnail-images {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            overflow-y: auto;
+            height: 100%;
+        }
+        .thumbnail-images img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+        }
+        .thumbnail-images img:hover {
+            border-color: #1e3a8a;
+        }
+        footer {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Property Gallery</h1>
+</header>
+
+<div class="container">
+    <div class="image-gallery">
+        <div class="main-image">
+            <img id="mainImage" src="" alt="Selected Property Image">
+        </div>
+        <div class="thumbnail-images" id="thumbnailImages">
+        <a href="gallery.html?image=frontofhouse"><img src="C:/Users/yolyn/OneDrive/Desktop/frontofhouse.jpg" alt="Front of House"></a>
+            <a href="gallery.html?image=House Page/IMG1"><img src="C:/Users/yolyn/OneDrive/Desktop/House Page/IMG1.jpg" alt="Interior Image 1"></a>
+            <a href="gallery.html?image=House Page/IMG2"><img src="C:/Users/yolyn/OneDrive/Desktop/House Page/IMG2.jpg" alt="Interior Image 2"></a>
+            <a href="gallery.html?image=House Page/IMG3"><img src="C:/Users/yolyn/OneDrive/Desktop/House Page/IMG3.jpg" alt="Interior Image 3"></a>
+
+
+        <a href="gallery.html?image=House Page/IMG4"><img src="C:/Users/yolyn/OneDrive/Desktop/House Page/IMG4.jpg" alt="Interior Image 4"></a>
+        <a href="gallery.html?image=House Page/IMG5"><img src="C:/Users/yolyn/OneDrive/Desktop/House Page/IMG5.jpg" alt="Interior Image 5"></a>
+        <a href="gallery.html?image=House Page/IMG6"><img src="C:/Users/yolyn/OneDrive/Desktop/House Page/IMG6.jpg" alt="Interior Image 6"></a>
+        <a href="gallery.html?image=House Page/IMG7"><img src="C:/Users/yolyn/OneDrive/Desktop/House Page/IMG7.jpg" alt="Interior Image 7"></a>
+        <a href="gallery.html?image=House Page/IMG8"><img src="C:/Users/yolyn/OneDrive/Desktop/House Page/IMG8.jpg" alt="Interior Image 8"></a>
+        <a href="gallery.html?image=House Page/IMG9"><img src="C:/Users/yolyn/OneDrive/Desktop/House Page/IMG9.jpg" alt="Interior Image 9"></a>
+        <a href="gallery.html?image=House Page/IMG10"><img src="C:/Users/yolyn/OneDrive/Desktop/House Page/IMG10.jpg" alt="Interior Image 10"></a>
+        <a href="gallery.html?image=House Page/IMG11"><img src="C:/Users/yolyn/OneDrive/Desktop/House Page/IMG11.jpg" alt="Interior Image 11"></a>
+        <a href="gallery.html?image=House Page/IMG12"><img src="C:/Users/yolyn/OneDrive/Desktop/House Page/IMG12.jpg" alt="Interior Image 12"></a>
+        <a href="gallery.html?image=House Page/IMG13"><img src="C:/Users/yolyn/OneDrive/Desktop/House Page/IMG13.jpg" alt="Interior Image 13"></a>
+        <a href="gallery.html?image=House Page/IMG14"><img src="C:/Users/yolyn/OneDrive/Desktop/House Page/IMG14.jpg" alt="Interior Image 14"></a>
+        <a href="gallery.html?image=House Page/IMG15"><img src="C:/Users/yolyn/OneDrive/Desktop/House Page/IMG15.jpg" alt="Interior Image 15"></a>
+        <a href="gallery.html?image=House Page/IMG16"><img src="C:/Users/yolyn/OneDrive/Desktop/House Page/IMG16.jpg" alt="Interior Image 16"></a>
+        <a href="gallery.html?image=House Page/IMG17"><img src="C:/Users/yolyn/OneDrive/Desktop/House Page/IMG17.jpg" alt="Interior Image 17"></a>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 All Rights Reserved.</p>
+</footer>
+
+<script>
+    // Function to get URL parameter
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    // Function to save the scroll position of the thumbnail container
+    function saveScrollPosition() {
+        const thumbnailImages = document.getElementById('thumbnailImages');
+        if (thumbnailImages) {
+            localStorage.setItem('thumbnailScrollPosition', thumbnailImages.scrollTop);
+        }
+    }
+
+    // Function to restore the scroll position of the thumbnail container
+    function restoreScrollPosition() {
+        const thumbnailImages = document.getElementById('thumbnailImages');
+        const scrollPosition = localStorage.getItem('thumbnailScrollPosition');
+        if (thumbnailImages && scrollPosition !== null) {
+            thumbnailImages.scrollTop = parseInt(scrollPosition, 10);
+        }
+    }
+
+    // Function to update the main image
+    function updateMainImage(src) {
+        const mainImage = document.getElementById('mainImage');
+        if (mainImage) {
+            mainImage.src = src;
+        }
+    }
+
+    // Initialize the gallery
+    function initGallery() {
+        const imageParam = getQueryParam('image');
+        const mainImage = document.getElementById('mainImage');
+        const thumbnailImages = document.getElementById('thumbnailImages');
+        const thumbnails = document.querySelectorAll('.thumbnail-images img');
+        let currentIndex = -1;
+
+        // Set the main image based on the URL parameter
+        if (imageParam) {
+            const imgPath = "C:/Users/yolyn/OneDrive/Desktop/" + imageParam + ".jpg";
+            updateMainImage(imgPath);
+
+            // Find the current index and scroll to the thumbnail
+            thumbnails.forEach((thumb, index) => {
+                if (thumb.src.includes(imageParam)) {
+                    currentIndex = index;
+                }
+            });
+
+            if (currentIndex !== -1) {
+                const scrollPosition = thumbnails[currentIndex].offsetTop - (thumbnailImages.clientHeight / 2) + (thumbnails[currentIndex].clientHeight / 2);
+                thumbnailImages.scrollTo({
+                    top: scrollPosition,
+                    behavior: 'smooth'
+                });
+            }
+        } else {
+            updateMainImage("C:/Users/yolyn/OneDrive/Desktop/frontofhouse.jpg"); // Default image
+        }
+    }
+
+    // Save scroll position before page unload
+    window.addEventListener('beforeunload', saveScrollPosition);
+
+    // Restore scroll position and initialize gallery after page load
+    window.addEventListener('load', () => {
+        restoreScrollPosition();
+        initGallery();
+    });
+</script>
+
+</body>
+</html>
